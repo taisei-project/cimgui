@@ -480,7 +480,9 @@ end
 --]]
 -------------------copy C files to repo root
 copyfile("./output/cimgui.h", "../cimgui.h")
+copyfile("./output/cimgui_impl.h", "../cimgui_impl.h")
 copyfile("./output/cimgui.cpp", "../cimgui.cpp")
 os.remove("./output/cimgui.h")
+os.remove("./output/cimgui_impl.h")
 os.remove("./output/cimgui.cpp")
 print"all done!!"
