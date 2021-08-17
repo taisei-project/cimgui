@@ -2,7 +2,6 @@ project('cimgui', 'c', 'cpp')
 
 sdl2_dep = dependency('sdl2')
 freetype2_dep = dependency('freetype2')
-glad_dep = subproject('glad').get_variable('glad_dep')
 
 add_project_arguments(
   '-DIMGUI_USER_CONFIG="_cimgui_config.h"',
@@ -44,29 +43,13 @@ imgui_sdl_dep = declare_dependency(
   include_directories : include_directories('imgui/backends'),
 )
 
-imgui_gl3_src = files(
-  'imgui/backends/imgui_impl_opengl3.cpp',
-)
-
-imgui_gl3_lib = library('imgui-gl3',
-  imgui_gl3_src,
-  dependencies : [imgui_dep, glad_dep],
-  cpp_args : ['-DIMGUI_IMPL_OPENGL_LOADER_GLAD2'],
-  include_directories : include_directories('imgui/backends'),
-)
-
-imgui_gl3_dep = declare_dependency(
-  link_with : imgui_gl3_lib,
-  include_directories : include_directories('imgui/backends'),
-)
-
 cimgui_src = files(
   'cimgui.cpp',
 )
 
 cimgui_lib = library('cimui',
   cimgui_src,
-  dependencies : [imgui_dep, imgui_sdl_dep, imgui_gl3_dep],
+  dependencies : [imgui_dep, imgui_sdl_dep],
   include_directories : include_directories('.'),
 )
 
