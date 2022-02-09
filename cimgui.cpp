@@ -4,6 +4,8 @@
 //with imgui_freetype.h api
 //docking branch
 #define IMGUI_ENABLE_FREETYPE
+#include IMGUI_USER_CONFIG
+
 #ifdef IMGUI_ENABLE_FREETYPE
 #ifndef CIMGUI_FREETYPE
 #error "IMGUI_FREETYPE should be defined for Freetype linking"
