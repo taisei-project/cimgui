@@ -58,3 +58,24 @@ cimgui_dep = declare_dependency(
   include_directories : include_directories('.'),
 )
 
+cimgui_stub_src = files(
+  'cimgui_stub.cpp',
+)
+
+cimgui_stub_args = [
+    '-DCIMGUI_STUB',
+]
+
+cimgui_stub_lib = static_library('cimui_stub',
+  cimgui_stub_src,
+  c_args : cimgui_stub_args,
+  cpp_args : cimgui_stub_args,
+  dependencies : imgui_dep.partial_dependency(includes : true),
+  include_directories : include_directories('.'),
+)
+
+cimgui_stub_dep = declare_dependency(
+  link_with : cimgui_stub_lib,
+  include_directories : include_directories('.'),
+  compile_args : cimgui_stub_args,
+)
